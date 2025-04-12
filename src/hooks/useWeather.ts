@@ -2,7 +2,13 @@ import { TCurrentWeather, TForecastWeather } from '@types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-export function useWeather() {
+export type TLocation = {
+  lat: number;
+  lon: number;
+  label?: string;
+};
+
+export function useWeather(location?: TLocation | null) {
   const [current, setCurrent] = useState<TCurrentWeather | null>(null);
   const [forecast, setForecast] = useState<TForecastWeather>([]);
   const [loading, setLoading] = useState(true);
@@ -10,29 +16,31 @@ export function useWeather() {
   const apiKey = process.env.OPEN_WEATHER_API_KEY;
 
   useEffect(() => {
-    function fetchWeather(lat: number, lon: number) {
+    async function fetchWeather(lat: number, lon: number) {
       const currentURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
       const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
-      Promise.all([axios.get(currentURL), axios.get(forecastURL)])
-        .then(([currentRes, forecastRes]) => {
-          setCurrent(currentRes.data);
-          setForecast(forecastRes.data.list);
-        })
-        .catch((err) => {
-          setError('Failed to fetch weather data');
-          console.error(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      try {
+        const [currentRes, forecastRes] = await Promise.all([
+          axios.get(currentURL),
+          axios.get(forecastURL),
+        ]);
+        setCurrent(currentRes.data);
+        setForecast(forecastRes.data.list);
+      } catch (err) {
+        console.error(err);
+        setError('Failed to fetch weather data');
+      } finally {
+        setLoading(false);
+      }
     }
 
-    if (navigator.geolocation) {
+    if (location) {
+      fetchWeather(location.lat, location.lon);
+    } else if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          fetchWeather(latitude, longitude);
+        ({ coords }) => {
+          fetchWeather(coords.latitude, coords.longitude);
         },
         (err) => {
           console.error(err);
@@ -44,7 +52,7 @@ export function useWeather() {
       setError('Geolocation not supported');
       setLoading(false);
     }
-  }, []);
+  }, [location?.lat, location?.lon]);
 
   return {
     current,

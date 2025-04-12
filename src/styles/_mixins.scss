@@ -439,7 +439,7 @@
 }
 
 @mixin box-shadow() {
-  box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.32);
-  -webkit-box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.32);
-  -moz-box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.32);
+  box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.1);
 }

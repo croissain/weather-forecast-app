@@ -1,3 +1,4 @@
+import Container from '@layouts/Container';
 import Header from '@layouts/Header';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
@@ -8,9 +9,9 @@ const MainLayout = () => {
   return (
     <div className={s.mainLayout}>
       <Header />
-      <div className={s.mainLayout_content}>
+      <Container className={s.mainLayout_content}>
         <Outlet />
-      </div>
+      </Container>
     </div>
   );
 };

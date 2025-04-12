@@ -1,21 +1,22 @@
 import { useWeather } from '@hooks/useWeather';
-import Container from '@layouts/Container';
 import TodayForecast from '@modules/Home/TodayForecast';
 import WeekForecast from '@modules/Home/WeekForecast';
+import { useLocation } from '@providers/LocationProvider';
 import React from 'react';
 
 const Home = () => {
-  const { current, forecast, loading } = useWeather();
+  const { location } = useLocation();
+  const { current, forecast, loading } = useWeather(location);
 
   if (loading) return <p>Loading...</p>;
 
   if (!current || !forecast) return <p>Weather data unavailable</p>;
 
   return (
-    <Container>
+    <>
       <TodayForecast data={current} />
       <WeekForecast data={forecast} />
-    </Container>
+    </>
   );
 };
 

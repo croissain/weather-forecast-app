@@ -32,6 +32,7 @@ module.exports = {
     "react/function-component-definition": 'off',
     "jsx-a11y/click-events-have-key-events": 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
-    'import/no-extraneous-dependencies': 'off'
+    'import/no-extraneous-dependencies': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off'
   },
 };

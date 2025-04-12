@@ -1,6 +1,7 @@
 import './App.module.scss';
 
 import MainLayout from '@layouts';
+import { LocationProvider } from '@providers/LocationProvider';
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -48,7 +49,9 @@ const App = () => {
 const AppProvider = () => {
   return (
     <BrowserRouter>
-      <App />
+      <LocationProvider>
+        <App />
+      </LocationProvider>
     </BrowserRouter>
   );
 };

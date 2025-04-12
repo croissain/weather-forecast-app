@@ -75,7 +75,7 @@ const TodayForecast = ({ data }: TodayForecastProps) => {
         >
           <Typography color="secondary">Visibiliy</Typography>
           <Typography variant="body" weight={600}>
-            {data?.visibility}{' '}
+            {data?.visibility / 1000}{' '}
             <Typography tag="span" variant="description">
               km
             </Typography>
