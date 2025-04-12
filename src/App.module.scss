@@ -1,0 +1,29 @@
+@import './styles/_root';
+@import './styles/_reset';
+
+@import './components/*/style.module.scss';
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: rem(3px);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: $blue;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $beige;
+}
