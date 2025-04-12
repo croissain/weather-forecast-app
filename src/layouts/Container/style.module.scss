@@ -1,0 +1,9 @@
+.container {
+  max-width: $screen-sm;
+  padding: 0 rem(16);
+  margin: auto;
+
+  @include min-tablet {
+    padding: 0 rem(12);
+  }
+}

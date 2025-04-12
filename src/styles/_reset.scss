@@ -100,8 +100,8 @@ html {
   font-size: 16px !important;
   scrollbar-gutter: stable;
 
-  @media only screen and (min-width: 768px) {
-    font-size: calc((16px / 1080px) * 100vw) !important;
+  @include min-tablet {
+    font-size: vw(16px) !important;
   }
 }
 
@@ -133,17 +133,12 @@ img:is([loading='lazy']) {
   background-size: cover;
 }
 
-body {
-  line-height: 110%;
-  font-weight: normal;
-  font-size: rem(16px);
-  color: var(--blue);
-
-  &.is-locked {
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-  }
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 a {

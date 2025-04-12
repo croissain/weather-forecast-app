@@ -322,7 +322,7 @@
 }
 
 @function vw($px, $base: 1920px) {
-  @return ($px / $base) * 100vw;
+  @return math.div($px, $base) * 100vw;
 }
 
 @function px($val) {
@@ -369,7 +369,7 @@
 }
 
 @function vhMathDiv($px, $base) {
-  @return ($px / $base) * 100;
+  @return math.div($px, $base) * 100;
 }
 
 @function fixXvhMobile($vhInput) {
@@ -436,4 +436,10 @@
       color: $color;
     }
   }
+}
+
+@mixin box-shadow() {
+  box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.32);
+  -webkit-box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 2px 13px 33px 6px rgba(0, 0, 0, 0.32);
 }

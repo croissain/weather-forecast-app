@@ -1,5 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   mode: 'development',
@@ -19,6 +28,10 @@ module.exports = {
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@layouts': path.resolve(__dirname, 'src/layouts'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@types': path.resolve(__dirname, 'src/types'),
     },
   },
   devServer: {
@@ -26,6 +39,7 @@ module.exports = {
     port: 3000,
     hot: true,
     open: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -44,6 +58,7 @@ module.exports = {
               modules: {
                 namedExport: false,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
+                exportLocalsConvention: 'camelCase',
               },
             },
           },
@@ -65,11 +80,27 @@ module.exports = {
           'import-glob-loader'
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public',
+          to: '.',
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
+      ],
+    }),
+    new webpack.DefinePlugin(envKeys),
   ],
 };

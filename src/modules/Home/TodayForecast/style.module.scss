@@ -1,0 +1,17 @@
+.todayForecast {
+  margin-bottom: rem(16);
+
+  &_main {
+    margin-bottom: rem(20);
+  }
+
+  &_detail {
+    flex: 1;
+  }
+
+  &_windDeg {
+    svg {
+      transform: rotate(var(--wind-deg));
+    }
+  }
+}

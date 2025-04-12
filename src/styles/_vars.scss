@@ -21,24 +21,25 @@ $easeOutCubic: cubic-bezier(0.33, 1, 0.68, 1);
 $easeInOutCirc: cubic-bezier(0.45, 0, 0.55, 1);
 
 /* TYPOGRAPHY*/
-$base: 16px;
 $font_size_rem: 16px;
+$font-family-base: 'Inter', sans-serif;
 
-$black: #000000;
-$white: #ffffff;
-$beige: #ede7df;
-$secondary: $beige;
-$blue: #3f5458;
-$primary: $blue;
-$red: #e26d49;
-$accent: $red;
-$gold: #dca66d;
-$dark: #12100e;
+$black: var(--black);
+$white: var(--white);
+$aliceBlue: var(--alice-blue);
+$gray: var(--gray);
+$dark: var(--dark);
 
 $typography-colors: (
   'black': $black,
   'white': $white,
-  secondary: $beige,
-  primary: $blue,
-  accent: $red,
+  'primary': $dark,
+  'secondary': $gray,
 );
+
+/* RADIUS */
+$radius_sm: var(--radius-sm);
+$radius_md: var(--radius-md);
+$radius_lg: var(--radius-lg);
+$radius_xl: var(--radius-xl);
+$radius_rounded: var(--radius-rounded);

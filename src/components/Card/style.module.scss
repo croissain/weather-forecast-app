@@ -1,0 +1,7 @@
+.card {
+  background-color: $white;
+  border-radius: $radius_md;
+  @include box-shadow;
+  padding: rem(16);
+  overflow: hidden;
+}

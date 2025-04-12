@@ -27,6 +27,11 @@ module.exports = {
     'simple-import-sort/imports': 'warn',
     'simple-import-sort/exports': 'warn',
     'import/no-duplicates': 'error',
-    'react/require-default-props': 'off'
+    'react/require-default-props': 'off',
+    'arrow-body-style': 'off',
+    "react/function-component-definition": 'off',
+    "jsx-a11y/click-events-have-key-events": 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'import/no-extraneous-dependencies': 'off'
   },
 };

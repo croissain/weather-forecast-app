@@ -21,12 +21,15 @@ export type TypographyVariant =
   | 'caption'
   | 'description'
   | 'button';
-type TypographyColor = 'accent' | 'primary' | 'secondary';
+type TypographyColor = 'accent' | 'primary' | 'secondary' | 'error';
+
+type TypographyWeight = 400 | 500 | 600;
 
 export interface TypographyProps extends React.HTMLProps<HTMLOrSVGElement> {
   color?: TypographyColor;
   variant?: TypographyVariant;
   tag?: React.ElementType;
+  weight?: TypographyWeight;
   target?: string;
   href?: string;
 }
@@ -36,6 +39,7 @@ export const Typography = forwardRef((props: TypographyProps, ref: unknown) => {
     color = 'primary',
     variant = 'caption',
     tag: Tag = 'p',
+    weight = 400,
     className,
     children,
     ...restProps
@@ -43,7 +47,7 @@ export const Typography = forwardRef((props: TypographyProps, ref: unknown) => {
 
   return (
     <Tag
-      {...restProps}
+      style={{ fontWeight: weight }}
       ref={ref}
       className={cn(
         styles.typography,
@@ -51,6 +55,7 @@ export const Typography = forwardRef((props: TypographyProps, ref: unknown) => {
         styles[variant],
         className,
       )}
+      {...restProps}
     >
       {children}
     </Tag>
