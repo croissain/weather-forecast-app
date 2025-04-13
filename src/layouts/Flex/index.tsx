@@ -11,6 +11,7 @@ type FlexProps = {
   wrap?: 'wrap' | 'nowrap' | 'wrapReverse';
   gap?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
+  onClick?: () => void;
   as?: React.ElementType;
 };
 
@@ -22,6 +23,7 @@ const Flex: React.FC<FlexProps> = ({
   wrap = 'nowrap',
   gap = 'md',
   className,
+  onClick,
   as: Component = 'div',
 }) => {
   const classes = cn(
@@ -34,7 +36,11 @@ const Flex: React.FC<FlexProps> = ({
     className,
   );
 
-  return <Component className={classes}>{children}</Component>;
+  return (
+    <Component className={classes} onClick={onClick}>
+      {children}
+    </Component>
+  );
 };
 
 export default Flex;

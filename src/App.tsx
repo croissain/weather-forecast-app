@@ -1,5 +1,6 @@
 import './App.module.scss';
 
+import FullPageLoader from '@components/FullPageLoader';
 import MainLayout from '@layouts';
 import { LocationProvider } from '@providers/LocationProvider';
 import React, { Suspense } from 'react';
@@ -10,7 +11,7 @@ import useRoutesList from './routes/routes';
 const App = () => {
   const { routes } = useRoutesList();
   return (
-    <Suspense fallback={<div>Loading</div>}>
+    <Suspense fallback={<FullPageLoader />}>
       <Routes>
         <Route element={<MainLayout />}>
           {(Object.keys(routes) as Array<keyof typeof routes>).map(

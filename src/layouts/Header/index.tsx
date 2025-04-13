@@ -17,20 +17,26 @@ const Header = () => {
     <header className={s.header}>
       <Container>
         <Flex align="center" justify="between">
-          <div
+          <button
+            className={s.header_location}
+            type="button"
             onClick={() => {
               navigate(ROUTE_PATHS.HOME);
             }}
           >
             <Flex align="center" gap="sm">
-              <Icon name="location" />
-              <Typography variant="h6">
-                {location?.name}, {location?.country}
-              </Typography>
+              {location?.name && (
+                <>
+                  <Icon name="location" className={s.header_icon} />
+                  <Typography variant="h6" className={s.header_city}>
+                    {location?.name}, {location?.country}
+                  </Typography>
+                </>
+              )}
             </Flex>
-          </div>
-          <Link to={ROUTE_PATHS.SEARCH}>
-            <Icon name="search" />
+          </button>
+          <Link to={ROUTE_PATHS.SEARCH} className={s.header_search}>
+            <Icon name="search" className={s.header_icon} />
           </Link>
         </Flex>
       </Container>

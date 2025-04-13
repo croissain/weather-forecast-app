@@ -24,6 +24,7 @@ $easeInOutCirc: cubic-bezier(0.45, 0, 0.55, 1);
 $font_size_rem: 16px;
 $font-family-base: 'Inter', sans-serif;
 
+$accent: var(--accent);
 $black: var(--black);
 $white: var(--white);
 $aliceBlue: var(--alice-blue);
@@ -35,6 +36,7 @@ $typography-colors: (
   'white': $white,
   'primary': $dark,
   'secondary': $gray,
+  'error': #ff0000,
 );
 
 /* RADIUS */

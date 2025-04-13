@@ -1,3 +1,5 @@
+import FullPageLoader from '@components/FullPageLoader';
+import { Typography } from '@components/Typography';
 import { useWeather } from '@hooks/useWeather';
 import TodayForecast from '@modules/Home/TodayForecast';
 import WeekForecast from '@modules/Home/WeekForecast';
@@ -8,9 +10,10 @@ const Home = () => {
   const { location } = useLocation();
   const { current, forecast, loading } = useWeather(location);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <FullPageLoader />;
 
-  if (!current || !forecast) return <p>Weather data unavailable</p>;
+  if (!current || !forecast)
+    return <Typography>Weather data unavailable</Typography>;
 
   return (
     <>

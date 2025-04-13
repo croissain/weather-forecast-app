@@ -1,9 +1,10 @@
 .container {
-  max-width: $screen-sm;
-  padding: 0 rem(16);
-  margin: auto;
+  max-width: 100% !important;
+  padding-left: calc(100vw / 24);
+  padding-right: calc(100vw / 24);
 
   @include min-tablet {
-    padding: 0 rem(12);
+    padding-left: calc(100vw / 3);
+    padding-right: calc(100vw / 3);
   }
 }

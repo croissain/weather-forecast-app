@@ -21,7 +21,7 @@ export type TypographyVariant =
   | 'caption'
   | 'description'
   | 'button';
-type TypographyColor = 'accent' | 'primary' | 'secondary' | 'error';
+type TypographyColor = 'accent' | 'primary' | 'secondary' | 'error' | 'white';
 
 type TypographyWeight = 400 | 500 | 600;
 

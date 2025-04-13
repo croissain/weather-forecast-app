@@ -1,0 +1,97 @@
+.search {
+  &_inputWrapper {
+    margin-bottom: rem(24);
+  }
+
+  &_wrapper {
+    position: relative;
+  }
+
+  &_error {
+    position: absolute;
+    bottom: rem(-20);
+  }
+
+  &_dropdown {
+    position: absolute;
+    width: 100%;
+    top: rem(48);
+    background-color: $white;
+    border-radius: $radius_sm;
+    max-height: rem(500);
+    overflow-y: scroll;
+    padding: rem(16);
+    @include box-shadow;
+
+    &_item {
+      padding: rem(8) rem(12);
+      border: 1px solid $aliceBlue;
+      border-radius: $radius-sm;
+
+      &:not(:last-child) {
+        margin-bottom: rem(8);
+      }
+    }
+  }
+
+  &_input {
+    width: 100%;
+    height: rem(40);
+    border-radius: $radius_sm;
+    padding: rem(4) rem(16);
+    border: 1px solid #e9e9e9;
+    @include box-shadow;
+  }
+
+  &_button {
+    background-color: $accent;
+    padding: rem(4) rem(16);
+    border-radius: $radius_sm;
+    color: $white;
+    cursor: pointer;
+    transition: all 0.3s $easeOutCubic;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &_history {
+    &_label {
+      margin-bottom: rem(16);
+    }
+
+    &_item {
+      padding: rem(8) rem(12);
+      border: 1px solid $aliceBlue;
+      border-radius: $radius-sm;
+      cursor: pointer;
+      transition: all 0.3s $easeOutCubic;
+
+      &:not(:last-child) {
+        margin-bottom: rem(8);
+      }
+
+      &:hover {
+        @include box-shadow;
+      }
+    }
+
+    &_delete {
+      cursor: pointer;
+      transition: all 0.3s $easeOutCubic;
+      &:hover {
+        svg {
+          path {
+            fill: red;
+          }
+        }
+      }
+    }
+  }
+
+  &_icon {
+    width: rem(20);
+    height: rem(20);
+  }
+}
