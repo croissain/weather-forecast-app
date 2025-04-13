@@ -5,6 +5,7 @@ This project is a weather forecast application built with the following technolo
 - **React**
 - **TypeScript**
 - **SCSS Modules**
+- **Axios**
 - **ESLint**
 - **Prettier**
 - **Webpack**
@@ -15,23 +16,25 @@ This project is a weather forecast application built with the following technolo
 
 Ensure you have the following installed:
 
-- **Node.js** (>= 14.x)
+- **Node.js**
 - **npm** or **yarn**
 
 ### Installation
 
 1. Clone the repository:
-  ```bash
-  git clone <repository-url>
-  cd weather-forecast-app
-  ```
+
+```bash
+git clone <repository-url>
+cd weather-forecast-app
+```
 
 2. Install dependencies:
-  ```bash
-  npm install
-  # or
-  yarn install
-  ```
+
+```bash
+npm install
+# or
+yarn install
+```
 
 ### Development
 
@@ -58,6 +61,7 @@ yarn build
 ### Linting and Formatting
 
 - Run ESLint:
+
   ```bash
   npm run lint
   # or
@@ -75,17 +79,27 @@ yarn build
 
 ```
 weather-forecast-app/
+├── public/                     # Static assets (index.html, etc.)
 ├── src/
-│   ├── components/   # React components
-│   ├── styles/       # SCSS modules
-│   ├── utils/        # Utility functions
-│   ├── App.tsx       # Main app component
-│   └── index.tsx     # Entry point
-├── public/           # Static assets
-├── .eslintrc.js      # ESLint configuration
-├── .prettierrc       # Prettier configuration
-├── webpack.config.js # Webpack configuration
-└── package.json      # Project metadata and scripts
+│   ├── components/             # Reusable UI components (Typography, Card, etc.)
+│   ├── constants/              # App-wide constants (routes, API keys, etc.)
+│   ├── hooks/                  # Custom React hooks (useWeather, useClickOutside)
+│   ├── layouts/                # Layout wrappers
+│   ├── modules/                # Feature modules
+│   ├── pages/                  # Page-level components (Home, Search)
+│   ├── providers/              # Context providers (LocationProvider)
+│   ├── routes/                 # App routing configuration
+│   ├── services/               # API services (weatherService, locationService)
+│   ├── styles/                 # Global and modular SCSS styles
+│   ├── types/                  # TypeScript type definitions
+│   ├── utils/                  # Utility functions
+│   ├── App.tsx                 # Main App component
+│   └── index.tsx               # Application entry point
+├── .eslintrc.js                # ESLint configuration
+├── .prettierrc                 # Prettier configuration
+├── tsconfig.json               # TypeScript configuration
+├── webpack.config.js           # Build configuration (depends on setup)
+└── package.json                # Project metadata and dependencies
 ```
 
 ## License
