@@ -1,0 +1,23 @@
+.forecastRow {
+  &_temp {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+.weekForecast {
+  margin-bottom: rem(16);
+  $root: &;
+
+  &_label {
+    margin-bottom: rem(16);
+  }
+
+  &_group {
+    &:not(:first-child) {
+      #{$root}_groupLabel {
+        margin: rem(24) 0 rem(8);
+      }
+    }
+  }
+}

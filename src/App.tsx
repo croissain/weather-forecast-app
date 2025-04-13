@@ -1,15 +1,60 @@
-import { Typography } from '@components/Typography';
-import React from 'react';
+import './App.module.scss';
 
-import styles from './App.module.scss';
+import FullPageLoader from '@components/FullPageLoader';
+import MainLayout from '@layouts';
+import { LocationProvider } from '@providers/LocationProvider';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-export default function App() {
+import useRoutesList from './routes/routes';
+
+const App = () => {
+  const { routes } = useRoutesList();
   return (
-    <>
-      <Typography className={styles.title}>
-        Hello, React + TypeScript + SCSS!
-      </Typography>
-      <p className={styles.title}>Hello, React + TypeScript + SCSS!</p>
-    </>
+    <Suspense fallback={<FullPageLoader />}>
+      <Routes>
+        <Route element={<MainLayout />}>
+          {(Object.keys(routes) as Array<keyof typeof routes>).map(
+            (ele, index) => {
+              if (routes[ele] && routes[ele].childrens) {
+                return (
+                  <Route
+                    key={`router-${ele}-${index.toString()}`}
+                    element={routes[ele].element}
+                  >
+                    {routes[ele].childrens?.map((child, childIndex) => (
+                      <Route
+                        key={`router-${ele}-${childIndex.toString()}`}
+                        path={child.path}
+                        element={child.element}
+                      />
+                    ))}
+                  </Route>
+                );
+              }
+              return (
+                <Route
+                  key={`router-${ele}-${index.toString()}`}
+                  path={routes[ele].path}
+                  element={routes[ele].element}
+                />
+              );
+            },
+          )}
+        </Route>
+      </Routes>
+    </Suspense>
   );
-}
+};
+
+const AppProvider = () => {
+  return (
+    <BrowserRouter>
+      <LocationProvider>
+        <App />
+      </LocationProvider>
+    </BrowserRouter>
+  );
+};
+
+export default AppProvider;
